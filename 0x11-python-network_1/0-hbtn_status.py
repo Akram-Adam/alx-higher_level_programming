@@ -1,14 +1,17 @@
 #!/usr/bin/python3
-"""script for testing status of web pages
+"""
+Fetches and displays the body of https://alx-intranet.hbtn.io/status using urllib.
+
+Usage: ./fetch_status.py
 """
 import urllib.request
+
 if __name__ == "__main__":
-    url = "https://alx-intranet.hbtn.io/status"
-
+    url = 'https://alx-intranet.hbtn.io/status'
+    
     with urllib.request.urlopen(url) as response:
-        body = response.read()
-    print("Body response:")
-    print(f"\t- type: {type(body)}")
-    print(f"\t- content: {body}")
-    print(f"\t- utf8 content: {body.decode('utf-8')}")
-
+        html = response.read()
+        print(f"Body response:")
+        print(f"\t- type: {type(html)}")
+        print("\t- content: {}".format(html))
+        print(f"\t- content: {html.decode('utf-8')}")
