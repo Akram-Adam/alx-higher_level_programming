@@ -1,15 +1,13 @@
 #!/usr/bin/python3
-"""script for testing POST requests so servers
+"""script for testing status of web pages
 """
 if __name__ == "__main__":
     import urllib.request
-    import urllib.parse
+    import urllib.error
     import sys
     url = sys.argv[1]
-    email = sys.argv[2]
-    payload = {'email': email}
-    payload = urllib.parse.urlencode(payload)
-    payload = payload.encode('ascii')
-    req = urllib.request.Request(url, payload)
-    with urllib.request.urlopen(req) as response:
-        print(response.read().decode('utf-8'))
+    try:
+        with urllib.request.urlopen(url) as resp:
+            print(resp.read().decode('utf-8'))
+    except urllib.error.HTTPError as e:
+        print("Error code: {}".format(e.code))
