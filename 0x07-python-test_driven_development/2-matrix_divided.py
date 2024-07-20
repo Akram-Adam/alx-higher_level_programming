@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+This is the divide module.
+has a function to divide matrix
+Divide all elements of a matrix
+"""
+
 def matrix_divided(matrix, div):
     errorMessage = "matrix must be a matrix (list of lists) of integers/floats"
     if not matrix:
